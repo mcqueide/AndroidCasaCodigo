@@ -1,6 +1,8 @@
 package br.com.casaCodigo.helloandroid;
 
+import br.com.casadocodigo.helloandroid.SaudacaoActivity;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
@@ -24,10 +26,14 @@ public class MainActivity extends Activity {
 	}
 
 	public void surpreenderUsuario(View v) {
-		Editable texto = this.nomeEditText.getText();
-		String msg = saudacao + " " + texto.toString();
-		this.saudacaoTextView.setText(msg);
+		
+		Intent intent = new Intent(SaudacaoActivity.ACAO_EXIBIR_SAUDACAO);
+		intent.addCategory(SaudacaoActivity.CATEGORIA_SAUDACAO);
+		
+		String texto = nomeEditText.getText().toString();
+		intent.putExtra(SaudacaoActivity.EXTRA_NOME_USUARIO, texto);
 
+		startActivity(intent);
 	}
 
 }
